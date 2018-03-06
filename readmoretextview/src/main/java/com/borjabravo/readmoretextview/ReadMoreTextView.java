@@ -173,6 +173,10 @@ public class ReadMoreTextView extends TextView {
         int trimEndIndex = text.length();
         switch (trimMode) {
             case TRIM_MODE_LINES:
+                if (trimEndIndex <= lineEndIndex) {
+                    return text;
+                }
+
                 trimEndIndex = lineEndIndex;
                 //find enough space to layout ELLIPSIZE
                 float ellipsizeWidth = getPaint().measureText(ELLIPSIZE + trimCollapsedText);
